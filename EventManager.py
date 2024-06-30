@@ -37,7 +37,7 @@ class EventManager:
         # Get the current time
         current_time = time.time_ns() // 1_000_000
 
-        # Clear queue if len > 6
+        # Remove last elem of queue if len > 6
         if len(self.eventQueue) > 6:
             self.eventQueue.popleft()
 
@@ -53,7 +53,7 @@ class EventManager:
             #print("Touch up for " + self.name)
             return
         
-        # Detect single tap
+        # Detect single tap and clear queue
         if len(self.eventQueue) > 1 and self.eventQueue[-1].id == 2 and self.eventQueue[-1].time - self.eventQueue[-2].time < 400:
             self.singleTapCallback()
             self.eventQueue.clear()
