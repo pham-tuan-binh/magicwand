@@ -65,6 +65,9 @@ detector = vision.HandLandmarker.create_from_options(options)
 # Capture Video
 camera = cv2.VideoCapture(0)
 
+cv2.namedWindow("Camera Feed", cv2.WINDOW_NORMAL)
+cv2.setWindowProperty("Camera Feed", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+
 # Create Event Manager
 thumb_index_tip = EventManager("thumb and index tip", [4, 8])
 thumb_middle_tip = EventManager("thumb and middle tip", [4, 12])
@@ -89,6 +92,8 @@ while camera.isOpened():
     if not ret:
         print("Can't receive frame (stream end?). Exiting ...")
         break
+    
+    frame = cv2.flip(frame, 1)
     
     # Convert the BGR image to RGB before processing.
     rgb_frame = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame)

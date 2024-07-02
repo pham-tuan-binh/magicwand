@@ -1,5 +1,18 @@
 # Magicwand: Hand Landmarks to Mouse
 
+# How to use
+
+Make sure you got [Python](https://www.python.org/downloads/) installed on your computer first. Then just type the below lines into your terminal:
+
+```Bash
+pip install -r requirements.txt
+
+python Loop.py
+
+```
+
+I haven't tried this on a fresh environment yet, so the requirements.txt might not cover all dependencies. If you are experiencing errors, feel free to open an issue or ping me.
+
 # Short brief
 
 This approach introduce an event manager for keeping track of finger taps. Therefore, you can use the relative distance of any joint to convert to mouse taps.
